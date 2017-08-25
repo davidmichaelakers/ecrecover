@@ -55,7 +55,7 @@ $ truffle test
 There are three different implementations of ecrecover in the contract and a corresponding web3.js integration test for each. The forth test 
 test against a presigned message in case there are issues signing the requests in the first three. 
 
-Update: The inital tests pass on Geth/v1.6.7 and Parity/v1.7.0 but fail on TestRPC/v1.1.2. A new set of (tests)[https://github.com/davidmichaelakers/ecrecover/blob/master/test/testEcRecoverMultiClient.js] was created to resolve that and passes on all of those clients. 
+Update: The inital tests pass on Geth/v1.6.7 and Parity/v1.7.0 but fail on TestRPC/v1.1.2. A new set of [tests](https://github.com/davidmichaelakers/ecrecover/blob/master/test/testEcRecoverMultiClient.js) was created to resolve that and passes on all of those clients. 
 
 ### Findings
 
@@ -65,14 +65,14 @@ The third implementation (ecrecover3) demonstrates this by calling out to the co
 
 Update: If you are looking at implementing ecrecover for a real-world application keep in mind:
 
- * Web3.js (web3.eth.sign)[https://github.com/ethereum/wiki/wiki/JavaScript-API#web3ethsign] method is not suitable for raw use as many ethereum clients implement eth_sign differently.
+ * Web3.js [web3.eth.sign](https://github.com/ethereum/wiki/wiki/JavaScript-API#web3ethsign) method is not suitable for raw use as many ethereum clients implement eth_sign differently.
     *  TestRPC depending on version may signature data of a different length than Geth or Parity
     *  TestRPC and Parity in previous versions added the prefix message themselves
     *  Parity in version before 1.6.6 returned signature data as vrs instead of rsv like Geth and TestRPC
- * The eth_sign function has been the subject of (breaking changes)[https://github.com/ethereum/go-ethereum/pull/2940]
- * New functions personal_sign and personal_ecRecover (are available)[https://github.com/ethereum/go-ethereum/wiki/Management-APIs#personal_sign].
+ * The eth_sign function has been the subject of [breaking changes](https://github.com/ethereum/go-ethereum/pull/2940)
+ * New functions personal_sign and personal_ecRecover [are available](https://github.com/ethereum/go-ethereum/wiki/Management-APIs#personal_sign).
  * The included tests will likely fail for client versions compatable with eth_sign prior to the breaking change.
- * Some work has been done in creating utility methods that solve these cross-client issues namely (ethereumjs-util)[https://github.com/ethereumjs/ethereumjs-util] however this only partially addresses the problem.   
+ * Some work has been done in creating utility methods that solve these cross-client issues namely [ethereumjs-util](https://github.com/ethereumjs/ethereumjs-util) however this only partially addresses the problem.   
 
 If you are interested in building real-world applications that implement ecrecover a cross-client wrapper for web3.eth.sign is required, and creating one means potentially supporting multiple implementations of eth_sign across different version of each client.   
 
