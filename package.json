@@ -6,7 +6,9 @@
     "chai": "^4.1.1",
     "chai-as-promised": "^7.1.1",
     "chai-bignumber": "^2.0.1",
+    "ethereumjs-util": "^5.1.2",
     "mocha": "^3.5.0",
     "truffle-contract": "^2.0.5"
-  }
+  },
+  "dependencies": {}
 }
