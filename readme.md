@@ -66,12 +66,12 @@ The third implementation (ecrecover3) demonstrates this by calling out to the co
 Update: If you are looking at implementing ecrecover for a real-world application keep in mind:
 
  * Web3.js [web3.eth.sign](https://github.com/ethereum/wiki/wiki/JavaScript-API#web3ethsign) method is not suitable for raw use as many ethereum clients implement eth_sign differently.
-    *  TestRPC depending on version may signature data of a different length than Geth or Parity
+    *  TestRPC depending on version may return signature data of a different length than Geth or Parity
     *  TestRPC and Parity in previous versions added the prefix message themselves
     *  Parity in version before 1.6.6 returned signature data as vrs instead of rsv like Geth and TestRPC
  * The eth_sign function has been the subject of [breaking changes](https://github.com/ethereum/go-ethereum/pull/2940)
  * New functions personal_sign and personal_ecRecover [are available](https://github.com/ethereum/go-ethereum/wiki/Management-APIs#personal_sign).
- * The included tests will likely fail for client versions compatable with eth_sign prior to the breaking change.
+ * The included tests will likely fail for client versions compatible with eth_sign prior to the breaking change.
  * Some work has been done in creating utility methods that solve these cross-client issues namely [ethereumjs-util](https://github.com/ethereumjs/ethereumjs-util) however this only partially addresses the problem.   
 
 If you are interested in building real-world applications that implement ecrecover a cross-client wrapper for web3.eth.sign is required, and creating one means potentially supporting multiple implementations of eth_sign across different version of each client.   
