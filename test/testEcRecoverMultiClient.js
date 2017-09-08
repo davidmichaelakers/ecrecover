@@ -1,5 +1,4 @@
 var Test = artifacts.require("./Test.sol")
-var _ = require('lodash')
 var ethUtil = require('ethereumjs-util')
 const BigNumber = web3.BigNumber
 const should = require('chai')
@@ -16,11 +15,11 @@ contract('Multi-client Test', function(accounts) {
     console.log('Ethereum Client: ' + version)
 
     //client
-    if (_.includes(version, 'TestRPC')) 
+    if (version.includes('TestRPC'))
       this.nodeVersion = 'testrpc'
-    else if (_.includes(version, 'Geth')) 
+    else if (version.includes('Geth'))
       this.nodeVersion = 'geth'
-    else if (_.includes(version, 'Parity')) 
+    else if (version.includes('Parity'))
       this.nodeVersion = 'parity'    
 
   })
